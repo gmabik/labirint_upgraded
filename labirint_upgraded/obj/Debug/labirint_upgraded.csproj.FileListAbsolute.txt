@@ -1,0 +1,7 @@
+C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\bin\Debug\labirint_upgraded.exe.config
+C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\bin\Debug\labirint_upgraded.exe
+C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\bin\Debug\labirint_upgraded.pdb
+C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.csprojAssemblyReference.cache
+C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.csproj.CoreCompileInputs.cache
+C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.exe
+C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.pdb
