@@ -11,56 +11,79 @@ namespace labirint_upgraded
     {
         static void Main(string[] args)
         {
-            char[,] maze = new char[30, 30];
+            int width = 30;
+            int height = 30;
+            int wallDensity = 30;
+            char[,] maze = new char[width, height];
             Position playerPosition = new Position();
             Position exitPosition = new Position();
-            GetPlayerAndExitPositions(out playerPosition, out exitPosition);
-            GenerateMaze(maze, playerPosition, exitPosition);
+            GetPlayerAndExitPositions(maze, out playerPosition, out exitPosition);
+            GenerateMaze(maze, playerPosition, exitPosition, wallDensity);
             ShowMaze(maze);
 
             while (playerPosition.x != exitPosition.x || playerPosition.y != exitPosition.y)
             {
-                Move(maze, playerPosition, out playerPosition);
+                Position newPlayerPosition = Input(playerPosition);
+                Move(maze, playerPosition, newPlayerPosition, out playerPosition);
+                Console.Clear();
                 ShowMaze(maze);
             }
-            Console.Clear();
             Console.WriteLine("Nice, you did it!");
         }
 
-        static void GenerateMaze(char[,] maze, Position playerPosition, Position exitPosition)
+        static void GenerateMaze(char[,] maze, Position playerPosition, Position exitPosition, int wallChance)
         {
             Random rnd = new Random();
             for (int y = 0; y < maze.GetLength(1); y++)
             {
                 for (int x = 0; x < maze.GetLength(0); x++)
                 {
-                    if (x == 0 || x == 29 || y == 0 || y == 29 || rnd.Next(1, 10) <= 3)
+                    if (rnd.Next(0, 100) <= wallChance)
                     {
                         maze[x, y] = '#';
                     }
                 }
             }
+            GenerateWallsOfMaze(maze);
 
             maze[exitPosition.x, exitPosition.y] = '?';
             maze[playerPosition.x, playerPosition.y] = '@';
         }
 
-        static void GetPlayerAndExitPositions(out Position playerPosition, out Position exitPosition)
+        static void GenerateWallsOfMaze(char[,] maze)
         {
-            playerPosition = GetRandomPosition();
-            exitPosition = GetRandomPosition();
-            while (playerPosition.x == exitPosition.x && playerPosition.y == exitPosition.y)
+            for(int y = 0; y < maze.GetLength(1); y+= maze.GetLength(1) - 1)
             {
-                exitPosition = GetRandomPosition();
+                for (int x = 0; x < maze.GetLength(0); x++)
+                {
+                    maze[x, y] = '#';
+                }
+            }
+            for (int y = 0; y < maze.GetLength(1); y++)
+            {
+                for (int x = 0; x < maze.GetLength(0); x += maze.GetLength(0) - 1)
+                {
+                    maze[x, y] = '#';
+                }
             }
         }
 
-        static Position GetRandomPosition()
+        static void GetPlayerAndExitPositions(char[,] maze, out Position playerPosition, out Position exitPosition)
+        {
+            playerPosition = GetRandomPosition(maze);
+            exitPosition = GetRandomPosition(maze);
+            while (playerPosition.x == exitPosition.x && playerPosition.y == exitPosition.y)
+            {
+                exitPosition = GetRandomPosition(maze);
+            }
+        }
+
+        static Position GetRandomPosition(char[,] maze)
         {
             Random rnd = new Random();
             Position a = new Position();
-            a.x = rnd.Next(1, 28);
-            a.y = rnd.Next(1, 28);
+            a.x = rnd.Next(1, maze.GetLength(0) - 2);
+            a.y = rnd.Next(1, maze.GetLength(1) - 2);
             return a;
         }
 
@@ -76,32 +99,8 @@ namespace labirint_upgraded
             }
         }
 
-        static void Move(char[,] maze, Position playerPosition, out Position changedPlayerPosition)
+        static void Move(char[,] maze, Position playerPosition, Position newPlayerPosition, out Position changedPlayerPosition)
         {
-            char answer = Console.ReadKey().KeyChar;
-            Position newPlayerPosition = new Position();
-            newPlayerPosition = playerPosition;
-            Console.Clear();
-            switch (answer)
-            {
-                case 'W':
-                case 'w':
-                    newPlayerPosition.y -= 1;
-                    break;
-                case 'A':
-                case 'a':
-                    newPlayerPosition.x -= 1;
-                    break;
-                case 'S':
-                case 's':
-                    newPlayerPosition.y += 1;
-                    break;
-                case 'D':
-                case 'd':
-                    newPlayerPosition.x += 1;
-                    break;
-            }
-
             if (maze[newPlayerPosition.x, newPlayerPosition.y] != '#')
             {
                 maze[playerPosition.x, playerPosition.y] = ' ';
@@ -111,5 +110,29 @@ namespace labirint_upgraded
             changedPlayerPosition = playerPosition;
         }
 
+        static Position Input(Position playerPosition)
+        {
+            char answer = Console.ReadKey().KeyChar;
+            switch (answer)
+            {
+                case 'W':
+                case 'w':
+                    playerPosition.y -= 1;
+                    break;
+                case 'A':
+                case 'a':
+                    playerPosition.x -= 1;
+                    break;
+                case 'S':
+                case 's':
+                    playerPosition.y += 1;
+                    break;
+                case 'D':
+                case 'd':
+                    playerPosition.x += 1;
+                    break;
+            }
+            return playerPosition;
+        }
     }
 }
