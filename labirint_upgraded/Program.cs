@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace labirint_upgraded
 {
@@ -14,13 +15,14 @@ namespace labirint_upgraded
             int width = 30;
             int height = 30;
             int wallDensity = 30;
+            Console.SetWindowSize(width, height);
+            Console.SetBufferSize(width + 1, height + 1);
             char[,] maze = new char[width, height];
             Position playerPosition = new Position();
             Position exitPosition = new Position();
             GetPlayerAndExitPositions(maze, out playerPosition, out exitPosition);
             GenerateMaze(maze, playerPosition, exitPosition, wallDensity);
             ShowMaze(maze);
-
             while (playerPosition.x != exitPosition.x || playerPosition.y != exitPosition.y)
             {
                 Position newPlayerPosition = Input(playerPosition);
@@ -28,6 +30,7 @@ namespace labirint_upgraded
                 Console.Clear();
                 ShowMaze(maze);
             }
+            Console.Clear();
             Console.WriteLine("Nice, you did it!");
         }
 
@@ -94,10 +97,11 @@ namespace labirint_upgraded
             {
                 for (int x = 0; x < maze.GetLength(0); x++)
                 {
-                    Console.Write(maze[x, y]);
+                    Console.Write(maze[x, y]); 
                 }
                 Console.WriteLine();
             }
+            Console.SetCursorPosition(0, 0);
         }
 
         static void Move(char[,] maze, Position playerPosition, Position newPlayerPosition, out Position changedPlayerPosition)
