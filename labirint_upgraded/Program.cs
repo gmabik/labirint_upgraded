@@ -42,6 +42,7 @@ namespace labirint_upgraded
                     {
                         maze[x, y] = '#';
                     }
+                    else maze[x, y] = ' ';
                 }
             }
             GenerateWallsOfMaze(maze);

@@ -5,3 +5,11 @@ C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirin
 C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.csproj.CoreCompileInputs.cache
 C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.exe
 C:\Users\Vlad\source\repos\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.pdb
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\bin\Debug\labirint_upgraded.exe.config
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\bin\Debug\labirint_upgraded.exe
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\bin\Debug\labirint_upgraded.pdb
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.csproj.AssemblyReference.cache
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.csproj.SuggestedBindingRedirects.cache
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.csproj.CoreCompileInputs.cache
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.exe
+C:\Users\vvelykod\Source\Repos\gmabik\labirint_upgraded\labirint_upgraded\obj\Debug\labirint_upgraded.pdb
