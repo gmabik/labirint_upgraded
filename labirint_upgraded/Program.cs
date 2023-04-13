@@ -12,9 +12,9 @@ namespace labirint_upgraded
     {
         static void Main(string[] args)
         {
-            int width = 30;
-            int height = 30;
-            int wallDensity = 30;
+            int width = 40;
+            int height = 20;
+            int wallDensity = 25;
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width + 1, height + 1);
             char[,] maze = new char[width, height];
